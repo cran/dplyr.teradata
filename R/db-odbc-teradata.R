@@ -22,3 +22,10 @@ db_has_table.Teradata <- function(con, table, ...) {
   table_names <- tolower(db_list_tables(con))
   table %in% table_names
 }
+
+#' @importFrom dplyr db_create_table
+#' @export
+db_create_table.Teradata <- function(con, table, types, temporary = TRUE, ...) {
+  sql <- sqlCreateTable(con, table, types, temporary = temporary)
+  dbExecute(con, sql)
+}
