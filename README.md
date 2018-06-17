@@ -1,11 +1,13 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-dplyr.teradata: A Teradata Backend for dplyr
-============================================
+A Teradata Backend for dplyr
+============================
+
+#### *Koji Makiyama (@hoxo\_m)*
 
 [![Travis-CI Build
 Status](https://travis-ci.org/hoxo-m/dplyr.teradata.svg?branch=master)](https://travis-ci.org/hoxo-m/dplyr.teradata)
 [![CRAN
-Version](http://www.r-pkg.org/badges/version/dplyr.teradata)](https://cran.r-project.org/package=dplyr.teradata)
+Version](http://www.r-pkg.org/badges/version-ago/dplyr.teradata)](https://cran.r-project.org/package=dplyr.teradata)
 [![CRAN
 Downloads](http://cranlogs.r-pkg.org/badges/dplyr.teradata)](http://cranlogs.r-pkg.org/badges/dplyr.teradata)
 [![Coverage
@@ -31,7 +33,6 @@ my_table <- tbl(con, "my_table_name")
 
 # Build a query
 q <- my_table %>% 
-  select(date) %>%
   filter(between(date, "2017-01-01", "2017-01-03")) %>% 
   group_by(date) %>%
   summarise(n = n()) %>%
@@ -40,8 +41,7 @@ q <- my_table %>%
 show_query(q)
 #> <SQL>
 #> SELECT "date", count(*) AS "n"
-#> FROM (SELECT "date" AS "date"
-#> FROM "my_table") "jmagvgwapc"
+#> FROM "my_table_name"
 #> WHERE ("date" BETWEEN '2017-01-01' AND '2017-01-03')
 #> GROUP BY "date"
 #> ORDER BY "date"
@@ -66,7 +66,7 @@ You can install the **dplyr.teradata** package from CRAN.
 install.packages("dplyr.teradata")
 ```
 
-You can also install the package from GitHub.
+You can also install the development version of the package from GitHub.
 
 ``` r
 install.packages("devtools") # if you have not installed "devtools" package
@@ -98,7 +98,7 @@ The package uses the **odbc** package to connect database and the
 First, you need to establish an ODBC connection to Teradata. See:
 
 -   [README - **odbc**
-    package](https://CRAN.R-project.org/package=odbc/README.html).
+    package](https://CRAN.R-project.org/package=odbc/readme/README.html).
 
 The **dplyr.teradata** package has special driver function `todbc()`.
 
@@ -142,7 +142,6 @@ For example, you can use follows:
 ``` r
 # Build a query
 q <- my_table %>% 
-  select(date) %>%
   filter(between(date, "2017-01-01", "2017-01-03")) %>% 
   group_by(date) %>%
   summarise(n = n()) %>%
@@ -159,8 +158,7 @@ If you want to show built queries, use `show_query()`:
 show_query(q)
 #> <SQL>
 #> SELECT "date", count(*) AS "n"
-#> FROM (SELECT "date" AS "date"
-#> FROM "my_table") "jmagvgwapc"
+#> FROM "my_table_name"
 #> WHERE ("date" BETWEEN '2017-01-01' AND '2017-01-03')
 #> GROUP BY "date"
 #> ORDER BY "date"

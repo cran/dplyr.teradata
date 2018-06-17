@@ -6,8 +6,6 @@
 \alias{show,Teradata-method}
 \alias{dbQuoteIdentifier,Teradata,character-method}
 \alias{dbQuoteIdentifier,Teradata,SQL-method}
-\alias{dbUnQuoteIdentifier,Teradata,SQL-method}
-\alias{dbUnQuoteIdentifier,Teradata,character-method}
 \alias{dbGetInfo,Teradata-method}
 \title{Teradata Odbc Connection Methods}
 \usage{
@@ -17,10 +15,6 @@
 
 \S4method{dbQuoteIdentifier}{Teradata,SQL}(conn, x, ...)
 
-\S4method{dbUnQuoteIdentifier}{Teradata,SQL}(conn, x)
-
-\S4method{dbUnQuoteIdentifier}{Teradata,character}(conn, x)
-
 \S4method{dbGetInfo}{Teradata}(dbObj, ...)
 }
 \arguments{
@@ -29,7 +23,7 @@
 \item{conn}{A subclass of \linkS4class{DBIConnection}, representing
 an active connection to an DBMS.}
 
-\item{x}{A character vector to quote as identifier.}
+\item{x}{A character vector, \link{SQL} or \link{Id} object to quote as identifier.}
 
 \item{...}{Other arguments passed on to methods.}
 
