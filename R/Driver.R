@@ -79,7 +79,7 @@ setMethod(
            dsn = NULL,
            ...,
            timezone = "UTC",
-           encoding = NULL,
+           encoding = "UTF-8",
            bigint = c("integer64", "integer", "numeric", "character"),
            driver = NULL,
            server = NULL,
@@ -113,7 +113,7 @@ setMethod(
     options(connectionObserver = NULL)
     tryCatch({
       con <- dbConnectODBC(
-        drv, timezone = timezone, encoding = "", bigint = bigint,
+        drv, timezone = timezone, encoding = encoding, bigint = bigint,
         driver = driver, DBCName = DBCName, database = database,
         uid = uid, pwd = pwd, charset = charset, tmode = tmode, port = port,
         dbms.name = dbms.name,
